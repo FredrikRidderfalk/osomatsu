@@ -606,6 +606,31 @@ button.tag--on {
   border-bottom: none;
 }
 
+/* strike-off while cooking (session-only state) */
+.ingredients li,
+.method li {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ingredients li:focus-visible,
+.method li:focus-visible {
+  outline: 2px solid var(--muted);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.ingredients li.struck span,
+.method li.struck p {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.method li.struck .method__num {
+  color: var(--muted);
+  text-decoration: none;
+}
+
 .ingredients__qty {
   font-family: var(--mono);
   font-size: 13px;

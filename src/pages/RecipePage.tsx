@@ -10,6 +10,12 @@ export function RecipePage({ recipe }: { recipe: Recipe }) {
   const { favorites, toggleFavorite } = useFavorites()
   const [servings, setServings] = useState(recipe.servings)
   const [system, setSystem] = useState<'us' | 'metric'>('metric')
+  // strike-off state while cooking — deliberately not persisted, resets on reload
+  const [usedIngredients, setUsedIngredients] = useState<number[]>([])
+  const [doneSteps, setDoneSteps] = useState<number[]>([])
+
+  const toggleIn = (list: number[], i: number) =>
+    list.includes(i) ? list.filter((x) => x !== i) : [...list, i]
 
   const scale = servings / recipe.servings
   const isFavorite = favorites.includes(recipe.slug)
@@ -104,8 +110,21 @@ export function RecipePage({ recipe }: { recipe: Recipe }) {
               </div>
             </div>
             <ul className="ingredients">
-              {recipe.ingredients.map((ing) => (
-                <li key={ing.name}>
+              {recipe.ingredients.map((ing, i) => (
+                <li
+                  key={ing.name}
+                  className={usedIngredients.includes(i) ? 'struck' : ''}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={usedIngredients.includes(i)}
+                  onClick={() => setUsedIngredients((prev) => toggleIn(prev, i))}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      setUsedIngredients((prev) => toggleIn(prev, i))
+                    }
+                  }}
+                >
                   <span className="ingredients__qty">
                     {ingredientQuantity(ing, system, scale)}
                   </span>
@@ -119,7 +138,20 @@ export function RecipePage({ recipe }: { recipe: Recipe }) {
             <h2 className="label">method</h2>
             <ol className="method">
               {recipe.method.map((step, i) => (
-                <li key={i}>
+                <li
+                  key={i}
+                  className={doneSteps.includes(i) ? 'struck' : ''}
+                  role="button"
+                  tabIndex={0}
+                  aria-pressed={doneSteps.includes(i)}
+                  onClick={() => setDoneSteps((prev) => toggleIn(prev, i))}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      setDoneSteps((prev) => toggleIn(prev, i))
+                    }
+                  }}
+                >
                   <span className="method__num">{String(i + 1).padStart(2, '0')}</span>
                   <p>{step}</p>
                 </li>
