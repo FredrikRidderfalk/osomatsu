@@ -36,7 +36,7 @@ export interface Recipe {
   ingredients: Ingredient[]
   method: string[]
   notes: string[]
-  /** Optional path to a bundled photo, e.g. '/recipes/guacamole.jpg' (in /public). */
+  /** Path to a bundled photo under public/, e.g. 'recipes/guacamole.jpg'. */
   image?: string
 }
 

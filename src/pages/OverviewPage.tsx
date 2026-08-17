@@ -4,15 +4,20 @@ import { CATEGORIES, TAGS } from '../types'
 import type { Category, Recipe, Tag } from '../types'
 import { TagPill } from '../components/TagPill'
 import { StarButton, StarIcon } from '../components/StarButton'
-import { storedPhoto } from '../hooks/usePhoto'
 import { useFavorites } from '../hooks/useFavorites'
 
 function Thumb({ recipe }: { recipe: Recipe }) {
-  const src = storedPhoto(recipe.slug) ?? recipe.image
-  return src ? (
-    <img className="thumb" src={src} alt="" />
-  ) : (
-    <div className="thumb thumb--empty" aria-hidden="true" />
+  const [failed, setFailed] = useState(false)
+  if (!recipe.image || failed) {
+    return <div className="thumb thumb--empty" aria-hidden="true" />
+  }
+  return (
+    <img
+      className="thumb"
+      src={import.meta.env.BASE_URL + recipe.image}
+      alt=""
+      onError={() => setFailed(true)}
+    />
   )
 }
 

@@ -472,55 +472,27 @@ button.tag--on {
 
 .photo {
   width: 100%;
-  height: 100%;
-  min-height: 320px;
-  border: 1.5px dashed var(--rule-strong);
-  border-radius: 6px;
-  background: #f7f8fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  height: 320px;
+  border-radius: 12px;
   overflow: hidden;
 }
 
-.photo--dragging {
-  border-color: var(--green);
-  background: #f3f7ec;
-}
-
-/* with a photo, the frame hugs the image at its natural aspect ratio */
-.photo--filled {
-  border-style: solid;
-  height: auto;
-  min-height: 0;
-  width: fit-content;
-  max-width: 100%;
-}
-
+/* full width at a fixed height — the image "zooms in" to fill, never distorts */
 .photo img {
   display: block;
-  max-width: 100%;
-  width: auto;
-  height: auto;
-  max-height: 320px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.photo__empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  color: var(--muted);
-  font-size: 13.5px;
-  text-align: center;
-  padding: 32px;
-}
-
-.photo__empty strong {
-  color: var(--body);
-  font-weight: 700;
-  margin-top: 8px;
+.photo--empty {
+  background: repeating-linear-gradient(
+    45deg,
+    #eceef2 0px,
+    #eceef2 7px,
+    #f6f7f9 7px,
+    #f6f7f9 14px
+  );
 }
 
 /* body: ingredients | method, notes under ingredients */
@@ -781,11 +753,7 @@ button.tag--on {
   }
 
   .photo {
-    min-height: 210px;
-  }
-
-  .photo img {
-    max-height: 210px;
+    height: 210px;
   }
 
   .recipe__intro {

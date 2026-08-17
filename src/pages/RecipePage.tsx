@@ -59,7 +59,7 @@ export function RecipePage({ recipe }: { recipe: Recipe }) {
             </dl>
           </div>
           <div className="recipe__photo">
-            <RecipePhoto slug={recipe.slug} image={recipe.image} name={recipe.name} />
+            <RecipePhoto image={recipe.image} name={recipe.name} />
           </div>
         </div>
 

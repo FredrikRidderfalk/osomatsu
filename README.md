@@ -7,7 +7,7 @@ just two page components and a hash-based route.
 
 - [Vite](https://vitejs.dev) + React + TypeScript
 - One global stylesheet (`src/styles.css`)
-- Favorites and user-added recipe photos persist in `localStorage`
+- Favorites persist in `localStorage`
 
 ## Develop
 
@@ -29,9 +29,9 @@ filters and search automatically.
   (omit `metric` when they're identical — counts, tsp/tbsp, "to taste").
 - `qty: null` renders as "to taste".
 - Quantities scale with the servings stepper on the recipe page.
-- To bundle a photo, drop it in `public/recipes/` and set
-  `image: '/recipes/<file>.jpg'` on the recipe. Without one, the recipe page
-  shows a drop zone — photos added there are stored in the browser.
+- Photos come from committed assets only: drop the file in `public/recipes/`
+  and set `image: 'recipes/<file>.jpg'` on the recipe. Without one (or if the
+  file is missing), a striped placeholder is shown instead.
 
 ## Pages
 
