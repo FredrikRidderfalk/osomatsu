@@ -9,7 +9,7 @@ import { ingredientQuantity } from '../lib/quantity'
 export function RecipePage({ recipe }: { recipe: Recipe }) {
   const { favorites, toggleFavorite } = useFavorites()
   const [servings, setServings] = useState(recipe.servings)
-  const [system, setSystem] = useState<'us' | 'metric'>('us')
+  const [system, setSystem] = useState<'us' | 'metric'>('metric')
 
   const scale = servings / recipe.servings
   const isFavorite = favorites.includes(recipe.slug)
