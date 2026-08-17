@@ -326,6 +326,38 @@ export const RECIPES: Recipe[] = [
       'Leftovers keep 2 days; loosen with a splash of water when reheating.',
     ],
   },
+  {
+    slug: 'waffles',
+    name: 'Waffles',
+    category: 'snack',
+    tags: ['quick', 'easy', 'cheap'],
+    mainIngredients: ['flour', 'plant milk', 'butter', 'baking powder'],
+    servings: 1,
+    prepMin: 10,
+    cookMin: 15,
+    kcal: 650,
+    ingredients: [
+      { name: 'Butter', us: { qty: 3, unit: 'tbsp' }, metric: { qty: 40, unit: 'g' } },
+      { name: 'Plant-based milk', us: { qty: 1, unit: 'cup' }, metric: { qty: 250, unit: 'ml' } },
+      { name: 'Flour', us: { qty: 0.67, unit: 'cup' }, metric: { qty: 80, unit: 'g' } },
+      { name: 'Sugar (optional)', us: { qty: 1.5, unit: 'tbsp' }, metric: { qty: 20, unit: 'g' } },
+      { name: 'Salt', us: { qty: 0.25, unit: 'tsp' } },
+      { name: 'Baking powder', us: { qty: 0.25, unit: 'tsp' } },
+    ],
+    method: [
+      'In a medium-sized bowl, whisk together the flour, baking powder, sugar and salt.',
+      'In a small saucepan or microwave-safe bowl, melt the butter.',
+      'In a separate bowl, mix the melted butter and plant-based milk until well combined.',
+      'Gradually pour the wet ingredients into the dry ingredients, whisking until a smooth batter forms.',
+      'Preheat your waffle iron according to instructions.',
+      'Pour an appropriate amount of batter onto the waffle iron and cook until golden brown and crispy, following your waffle maker’s guidelines.',
+      'Carefully remove the waffles and repeat with the remaining batter.',
+      'Serve warm with your favorite toppings like maple syrup, fresh fruits, or whipped cream.',
+    ],
+    notes: [
+      'The sugar is optional — skip it if you’re finishing with maple syrup anyway.',
+    ],
+  },
 ]
 
 export function findRecipe(slug: string): Recipe | undefined {
