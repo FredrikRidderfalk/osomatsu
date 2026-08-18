@@ -462,13 +462,21 @@ button.tag--on {
 }
 
 /* desktop: the photo pane sits flush with the card's top-right corner
-   and fills the full header height */
+   and fills the full header height. The image is absolutely positioned so
+   its own aspect ratio can never stretch the header — it just cover-crops
+   into the height the text column dictates. */
 .photo {
+  position: relative;
   width: 100%;
   height: 100%;
   min-height: 280px;
   border-radius: 0 18px 0 0;
   overflow: hidden;
+}
+
+.photo img {
+  position: absolute;
+  inset: 0;
 }
 
 /* full width at a fixed height — the image "zooms in" to fill, never distorts */
