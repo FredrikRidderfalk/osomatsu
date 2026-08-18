@@ -20,34 +20,43 @@ export function RecipePage({ recipe }: { recipe: Recipe }) {
   const scale = servings / recipe.servings
   const isFavorite = favorites.includes(recipe.slug)
 
+  // rendered twice: standalone above the photo on mobile, inside the intro column on desktop
+  const topbarContent = (
+    <>
+      <span className="label">
+        recipe · {recipe.category} · {recipe.prepMin + recipe.cookMin} min total
+      </span>
+      <div className="recipe__topbar-actions">
+        <StarButton
+          active={isFavorite}
+          onToggle={() => toggleFavorite(recipe.slug)}
+          label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
+        />
+        <a className="close-btn" href="#/" aria-label="Back to all recipes">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+            <path d="M6 6l12 12M18 6L6 18" />
+          </svg>
+        </a>
+      </div>
+    </>
+  )
+
   return (
     <div className="panel">
       <article className="card recipe">
-        <header className="recipe__topbar">
-          <span className="label">
-            recipe · {recipe.category} · {recipe.prepMin + recipe.cookMin} min total
-          </span>
-          <div className="recipe__topbar-actions">
-            <StarButton
-              active={isFavorite}
-              onToggle={() => toggleFavorite(recipe.slug)}
-              label={isFavorite ? 'Remove from favorites' : 'Add to favorites'}
-            />
-            <a className="close-btn" href="#/" aria-label="Back to all recipes">
-              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-                <path d="M6 6l12 12M18 6L6 18" />
-              </svg>
-            </a>
-          </div>
-        </header>
+        <header className="recipe__topbar recipe__topbar--mobile">{topbarContent}</header>
 
         <div className="recipe__hero">
           <div className="recipe__intro">
+            <header className="recipe__topbar recipe__topbar--desktop">{topbarContent}</header>
             <h1 className="recipe__title">{recipe.name}</h1>
-            <div className="recipe__tags">
+            <div className="recipe__meta-row">
               {recipe.tags.map((t) => (
                 <TagPill key={t} tag={t} />
               ))}
+              <span className="recipe__meta">
+                prep {recipe.prepMin} min · cook {recipe.cookMin} min · {recipe.kcal} kcal / srv
+              </span>
             </div>
             <dl className="stats">
               <div className="stats__cell">
