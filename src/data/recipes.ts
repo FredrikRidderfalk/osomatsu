@@ -110,6 +110,7 @@ export const RECIPES: Recipe[] = [
     prepMin: 30,
     cookMin: 0,
     kcal: 320,
+    image: 'recipes/cig-kofte.jpg',
     ingredients: [
       { name: 'Fine bulgur', us: { qty: 2, unit: 'cups' }, metric: { qty: 350, unit: 'g' } },
       { name: 'Turkish pepper paste (biber salçası)', us: { qty: 3, unit: 'tbsp' } },
