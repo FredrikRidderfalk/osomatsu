@@ -338,6 +338,7 @@ export const RECIPES: Recipe[] = [
     prepMin: 10,
     cookMin: 15,
     kcal: 650,
+    image: 'recipes/waffles.jpg',
     ingredients: [
       { name: 'Butter', us: { qty: 3, unit: 'tbsp' }, metric: { qty: 40, unit: 'g' } },
       { name: 'Plant-based milk', us: { qty: 1, unit: 'cup' }, metric: { qty: 250, unit: 'ml' } },
