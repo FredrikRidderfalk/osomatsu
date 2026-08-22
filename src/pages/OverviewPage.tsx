@@ -6,17 +6,27 @@ import { TagPill } from '../components/TagPill'
 import { StarButton, StarIcon } from '../components/StarButton'
 import { useFavorites } from '../hooks/useFavorites'
 
+/* The list only ever shows a 52px square, so it loads the small thumb asset
+   that sits in recipes/thumbs/ beside the photo. Recipes without one fall back
+   to the full photo, and only then to the striped placeholder. */
 function Thumb({ recipe }: { recipe: Recipe }) {
-  const [failed, setFailed] = useState(false)
-  if (!recipe.image || failed) {
+  const [stage, setStage] = useState<'thumb' | 'photo' | 'failed'>('thumb')
+
+  if (!recipe.image || stage === 'failed') {
     return <div className="thumb thumb--empty" aria-hidden="true" />
   }
+
+  const src =
+    stage === 'thumb' ? recipe.image.replace(/([^/]+)$/, 'thumbs/$1') : recipe.image
+
   return (
     <img
       className="thumb"
-      src={import.meta.env.BASE_URL + recipe.image}
+      src={import.meta.env.BASE_URL + src}
       alt=""
-      onError={() => setFailed(true)}
+      loading="lazy"
+      decoding="async"
+      onError={() => setStage(stage === 'thumb' ? 'photo' : 'failed')}
     />
   )
 }

@@ -32,6 +32,10 @@ filters and search automatically.
 - Photos come from committed assets only: drop the file in `public/recipes/`
   and set `image: 'recipes/<file>.jpg'` on the recipe. Without one (or if the
   file is missing), a striped placeholder is shown instead.
+- Two sizes per photo: `recipes/<slug>.jpg` at 1600x1067 for the recipe page
+  header, and `recipes/thumbs/<slug>.jpg` at 156x156 for the overview row.
+  The thumb path is derived by convention, so only `image` needs setting.
+  See `CLAUDE.md` for how the sizes are derived and how to generate them.
 
 ## Pages
 
