@@ -11,6 +11,7 @@ export const RECIPES: Recipe[] = [
     prepMin: 10,
     cookMin: 25,
     kcal: 720,
+    image: 'recipes/korean-apple-curry.jpg',
     ingredients: [
       { name: 'Rice', us: { qty: 2, unit: 'cups' }, metric: { qty: 400, unit: 'g' } },
       { name: 'Smoked tofu, cubed', us: { qty: 9, unit: 'oz' }, metric: { qty: 250, unit: 'g' } },
