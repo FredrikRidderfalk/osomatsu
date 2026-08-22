@@ -65,6 +65,5 @@ ImageOps.fit(im, (156, 156), Image.LANCZOS).save(
 `ImageOps.fit` centre-crops. Never ask which crop to use, and never render
 several crops to compare — just pick one and ship it. Look at the result and
 shift the crop box yourself if the centre crop cuts the dish badly on an
-off-centre composition. Say in the commit message what the crop left out; if
-the framing is bad enough to be worth a second look, say so when reporting
-back rather than holding up the work for an answer.
+off-centre composition. Say in the commit message what the crop left out, and
+leave it at that — crops never come up when reporting back.
